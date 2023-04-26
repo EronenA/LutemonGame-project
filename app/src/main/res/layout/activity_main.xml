@@ -10,10 +10,10 @@
         android:id="@+id/btnAddLutemonAct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="268dp"
+        android:layout_marginTop="516dp"
         android:onClick="switchToAddLutemonActivity"
         android:text="Luo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,5 +55,13 @@
         app:layout_constraintEnd_toEndOf="@+id/btnAddLutemonAct"
         app:layout_constraintStart_toStartOf="@+id/btnAddLutemonAct"
         app:layout_constraintTop_toBottomOf="@+id/btnAddLutemonAct" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLutemonsAtHome"
+        android:layout_width="413dp"
+        android:layout_height="453dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddLutemonAct"
+        app:layout_constraintTop_toBottomOf="@+id/btnTrain"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
