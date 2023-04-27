@@ -37,11 +37,37 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
         holder.lutemonHealt.setText("Elämä: " + String.valueOf(lutemons.get(position).getHealth()));
         holder.lutemonExperience.setText("Kokemus: " + String.valueOf(lutemons.get(position).getExperience()));
 
+        holder.imgTrain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int pos = holder.getAdapterPosition();
+                // From home to train
+                Lutemon lutemon = Storage.getInstance().getLutemonFromHomeById(pos);
+                Storage.getInstance().addLutemonToTrain(lutemon);
+                notifyItemRemoved(pos);
+
+            }
+        });
+
+
+        holder.imgFight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int pos = holder.getAdapterPosition();
+                // From home to fight
+                Lutemon lutemon = Storage.getInstance().getLutemonFromHomeById(pos);
+                Storage.getInstance().addLutemonToFight(lutemon);
+                notifyItemRemoved(pos);
+
+            }
+        });
+
+
         //RadioGroup rgLutemon = holder.rgSelectedLutemon.findViewById(position);
-        RadioButton rb;
-        rb = new RadioButton(context);
+        //RadioButton rb;
+        //rb = new RadioButton(context);
         //rgLutemon.addView(rb);
-        holder.rgSelectedLutemon.addView(rb);
+        //holder.rgSelectedLutemon.addView(rb);
 
     }
 

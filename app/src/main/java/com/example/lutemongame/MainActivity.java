@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     public void moveLutemonsFromHome(View view)  {
         RadioGroup rgSelectedLutemon = findViewById(R.id.rgSelectedLutemon);
         //int testi = rb.getCheckedRadioButtonId();
@@ -71,4 +70,6 @@ public class MainActivity extends AppCompatActivity {
         Storage.getInstance().loadUsers(context);
         recyclerView.setAdapter(new LutemonListAdapter(getApplicationContext(), storage.getLutemonsAtHome()));
     }
+
+
 }

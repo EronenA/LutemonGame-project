@@ -28,6 +28,13 @@ public class Storage {
             lutemonsAtHome.add(lutemon);
         }
 
+    public void addLutemonToTrain(Lutemon lutemon) {
+        lutemonsAtTrain.add(lutemon);
+    }
+    public void addLutemonToFight(Lutemon lutemon) {
+        lutemonsAtFight.add(lutemon);
+    }
+
     public ArrayList<Lutemon> getLutemonsAtHome() {
         return lutemonsAtHome;
     }
@@ -78,13 +85,14 @@ public class Storage {
     public Lutemon getLutemonFromHomeById(int id) {
         return lutemonsAtHome.remove(id);
     }
-    public void addLutemonToTrain(Lutemon lutemon) {
-        lutemonsAtTrain.add(lutemon);
-    }
-    public void addLutemonToFight(Lutemon lutemon) {
-        lutemonsAtFight.add(lutemon);
+
+    public Lutemon getLutemonFromTrainById(int id) {
+        return lutemonsAtTrain.remove(id);
     }
 
+    public Lutemon getLutemonFromFightById(int id) {
+        return lutemonsAtFight.remove(id);
+    }
 
 }
 

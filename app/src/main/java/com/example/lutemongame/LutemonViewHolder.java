@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class LutemonViewHolder extends RecyclerView.ViewHolder {
-    ImageView lutemonImage;
+    ImageView lutemonImage, imgFight, imgTrain;
     TextView lutemonNameAndColor, lutemonColor, lutemonAttack, lutemonDefence, lutemonHealt, lutemonExperience;
     RadioGroup rgSelectedLutemon;
 
@@ -25,7 +25,8 @@ public class LutemonViewHolder extends RecyclerView.ViewHolder {
         lutemonHealt = itemView.findViewById(R.id.txtLutemonHealt);
         lutemonExperience = itemView.findViewById(R.id.txtLutemonExperience);
         rgSelectedLutemon = itemView.findViewById(R.id.rgSelectedLutemon);
-
+        imgFight = itemView.findViewById(R.id.imgFight);
+        imgTrain = itemView.findViewById(R.id.imgTrain);
 
     }
 }
