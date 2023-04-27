@@ -24,12 +24,20 @@ public class Storage {
         return storage;
         }
 
-        public void addLutemon (Lutemon lutemon){
+    public void addLutemonToHome (Lutemon lutemon){
             lutemonsAtHome.add(lutemon);
         }
 
     public ArrayList<Lutemon> getLutemonsAtHome() {
         return lutemonsAtHome;
+    }
+
+    public ArrayList<Lutemon> getLutemonsAtTrain() {
+        return lutemonsAtTrain;
+    }
+
+    public ArrayList<Lutemon> getLutemonsAtFight() {
+        return lutemonsAtFight;
     }
 
     public void saveUsers(Context context) { // Save lutemons from the arraylists to own files
@@ -70,6 +78,13 @@ public class Storage {
     public Lutemon getLutemonFromHomeById(int id) {
         return lutemonsAtHome.remove(id);
     }
+    public void addLutemonToTrain(Lutemon lutemon) {
+        lutemonsAtTrain.add(lutemon);
+    }
+    public void addLutemonToFight(Lutemon lutemon) {
+        lutemonsAtFight.add(lutemon);
+    }
+
 
 }
 

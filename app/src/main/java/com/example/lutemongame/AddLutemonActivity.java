@@ -24,7 +24,7 @@ public class AddLutemonActivity extends AppCompatActivity {
         lutemonNameInput = findViewById(R.id.lutemonNameInput);
     }
 
-    public void crateLutemon(View view)    {
+    public void createLutemon(View view)    {
         name = String.valueOf(lutemonNameInput.getText());
 
         RadioGroup rgLutemonColor = findViewById(R.id.rgLutemonColor);
@@ -47,8 +47,8 @@ public class AddLutemonActivity extends AppCompatActivity {
         }
 
         lutemonNameInput.setText("");
-        System.out.println(newLutemon.name + " " + newLutemon.color + " " + newLutemon.maxHealth + " " + newLutemon.id);
-        storage.addLutemon(newLutemon);
+        //System.out.println(newLutemon.name + " " + newLutemon.color + " " + newLutemon.maxHealth + " " + newLutemon.id); // test line
+        storage.addLutemonToHome(newLutemon); //Add created Lutemon to lutemons at home
     }
     public void switchMainActivity(View view)    {
         Intent intent = new Intent(this, MainActivity.class);

@@ -36,6 +36,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void switchToTrainActivity(View view)    {
+        Intent intent = new Intent(this, TrainActivity.class);
+        startActivity(intent);
+    }
+
+    public void switchToFightActivity(View view)    {
+        Intent intent = new Intent(this, FightActivity.class);
+        startActivity(intent);
+    }
+
+
     public void moveLutemonsFromHome(View view)  {
         RadioGroup rgSelectedLutemon = findViewById(R.id.rgSelectedLutemon);
         //int testi = rb.getCheckedRadioButtonId();
@@ -58,5 +69,6 @@ public class MainActivity extends AppCompatActivity {
     }
     public void loadLutemons(View view)  {
         Storage.getInstance().loadUsers(context);
+        recyclerView.setAdapter(new LutemonListAdapter(getApplicationContext(), storage.getLutemonsAtHome()));
     }
 }
