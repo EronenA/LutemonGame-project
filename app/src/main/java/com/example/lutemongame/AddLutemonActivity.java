@@ -47,7 +47,6 @@ public class AddLutemonActivity extends AppCompatActivity {
         }
 
         lutemonNameInput.setText("");
-        //newLutemon  = new Orange("mauno");
         System.out.println(newLutemon.name + " " + newLutemon.color + " " + newLutemon.maxHealth + " " + newLutemon.id);
         storage.addLutemon(newLutemon);
     }

@@ -7,19 +7,8 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btnAddLutemonAct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="516dp"
-        android:onClick="switchToAddLutemonActivity"
-        android:text="Luo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/btnHome"
-        android:layout_width="wrap_content"
+        android:layout_width="105dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
@@ -29,7 +18,7 @@
 
     <Button
         android:id="@+id/btnTrain"
-        android:layout_width="wrap_content"
+        android:layout_width="105dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Treeni"
@@ -39,7 +28,7 @@
 
     <Button
         android:id="@+id/btnFight"
-        android:layout_width="wrap_content"
+        android:layout_width="105dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
@@ -48,20 +37,57 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnMove"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnAddLutemonAct"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="388dp"
+        android:onClick="switchToAddLutemonActivity"
+        android:text="Luo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.281"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnLoad"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:onClick="loadLutemons"
+        android:text="Lataa"
+        app:layout_constraintEnd_toEndOf="@+id/btnSave"
+        app:layout_constraintStart_toEndOf="@+id/btnAddLutemonAct"
+        app:layout_constraintTop_toBottomOf="@+id/btnSave" />
+
+    <Button
+        android:id="@+id/btnMove"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:onClick="moveLutemonsFromHome"
         android:text="Siirrä"
         app:layout_constraintEnd_toEndOf="@+id/btnAddLutemonAct"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btnAddLutemonAct"
         app:layout_constraintTop_toBottomOf="@+id/btnAddLutemonAct" />
 
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="388dp"
+        android:onClick="saveLutemons"
+        android:text="Tallenna"
+        app:layout_constraintStart_toEndOf="@+id/btnAddLutemonAct"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvLutemonsAtHome"
-        android:layout_width="413dp"
-        android:layout_height="453dp"
+        android:id="@+id/rvLutemonAtHomeList"
+        android:layout_width="415dp"
+        android:layout_height="318dp"
         app:layout_constraintBottom_toTopOf="@+id/btnAddLutemonAct"
         app:layout_constraintTop_toBottomOf="@+id/btnTrain"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="-2dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
