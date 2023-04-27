@@ -27,6 +27,9 @@ public class TrainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new LutemonListAdapter(getApplicationContext(), storage.getLutemonsAtTrain()));
         context = TrainActivity.this;
+        storage.setActivityOn("train");
+        System.out.println(storage.getActivityOn()); // test line, remove final version
+
 
         //Lutemon testLutemon = new Black("matti");                 // test lutemon
         //Storage.getInstance().addLutemonToTrain(testLutemon);

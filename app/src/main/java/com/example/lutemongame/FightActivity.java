@@ -28,6 +28,9 @@ public class FightActivity extends AppCompatActivity {
         recyclerView.setAdapter(new LutemonListAdapter(getApplicationContext(), storage.getLutemonsAtFight()));
         context = FightActivity.this;
 
+        storage.setActivityOn("fight"); // set current activity
+        System.out.println(storage.getActivityOn()); // test line, remove final version
+
         //Lutemon testLutemon = new Black("matti");                 // test lutemon
         //Storage.getInstance().addLutemonToFight(testLutemon);
 

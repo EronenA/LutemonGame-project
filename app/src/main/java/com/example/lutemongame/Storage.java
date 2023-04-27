@@ -15,6 +15,7 @@ public class Storage {
     private ArrayList<Lutemon> lutemonsAtHome = new ArrayList<>(); // Array list for lutemons at home
     private ArrayList<Lutemon> lutemonsAtTrain = new ArrayList<>(); // Array list for lutemons at training
     private ArrayList<Lutemon> lutemonsAtFight = new ArrayList<>(); // // Array list for lutemons at fighting
+    private static String activityOn = "home";
 
     //private HashMap<Integer, Lutemon> lutemons = new HashMap<>();
     public static Storage getInstance() {
@@ -94,5 +95,12 @@ public class Storage {
         return lutemonsAtFight.remove(id);
     }
 
+    public void setActivityOn(String activity)  {
+        this.activityOn = activity;
+    }
+
+    public String getActivityOn()   {
+        return activityOn;
+    }
 }
 

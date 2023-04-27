@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new LutemonListAdapter(getApplicationContext(), storage.getLutemonsAtHome()));
         context = MainActivity.this;
+        storage.setActivityOn("home");
+        System.out.println(storage.getActivityOn()); // test line, remove final version
+
 
     }
     public void switchToAddLutemonActivity(View view)    {

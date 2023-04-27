@@ -16,6 +16,8 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
 
     private Context context;
     private ArrayList<Lutemon> lutemons = new ArrayList<>();
+    //private Storage storage;
+
 
     public LutemonListAdapter(Context context, ArrayList<Lutemon> lutemons) {
         this.context = context;
@@ -41,11 +43,17 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
             @Override
             public void onClick(View view) {
                 int pos = holder.getAdapterPosition();
-                // From home to train
-                Lutemon lutemon = Storage.getInstance().getLutemonFromHomeById(pos);
-                Storage.getInstance().addLutemonToTrain(lutemon);
-                notifyItemRemoved(pos);
-
+                // to train
+                if (Storage.getInstance().getActivityOn() == "home") { // from home
+                    Lutemon lutemon = Storage.getInstance().getLutemonFromHomeById(pos);
+                    Storage.getInstance().addLutemonToTrain(lutemon);
+                    notifyItemRemoved(pos);
+                }
+                if (Storage.getInstance().getActivityOn() == "fight") { // from fight
+                    Lutemon lutemon = Storage.getInstance().getLutemonFromFightById(pos);
+                    Storage.getInstance().addLutemonToTrain(lutemon);
+                    notifyItemRemoved(pos);
+                }
             }
         });
 
@@ -53,12 +61,20 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
         holder.imgFight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int pos = holder.getAdapterPosition();
-                // From home to fight
-                Lutemon lutemon = Storage.getInstance().getLutemonFromHomeById(pos);
-                Storage.getInstance().addLutemonToFight(lutemon);
-                notifyItemRemoved(pos);
 
+                int pos = holder.getAdapterPosition();
+                // to fight
+
+                if (Storage.getInstance().getActivityOn() == "home") { // from home to fight
+                    Lutemon lutemon = Storage.getInstance().getLutemonFromHomeById(pos);
+                    Storage.getInstance().addLutemonToFight(lutemon);
+                    notifyItemRemoved(pos);
+                }
+                if (Storage.getInstance().getActivityOn() == "train") { // from train to fight
+                    Lutemon lutemon = Storage.getInstance().getLutemonFromTrainById(pos);
+                    Storage.getInstance().addLutemonToFight(lutemon);
+                    notifyItemRemoved(pos);
+                }
             }
         });
 
