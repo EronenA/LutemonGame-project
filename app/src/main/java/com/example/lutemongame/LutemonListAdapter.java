@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -66,14 +67,18 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
                 // to fight
 
                 if (Storage.getInstance().getActivityOn() == "home") { // from home to fight
-                    Lutemon lutemon = Storage.getInstance().getLutemonFromHomeById(pos);
-                    Storage.getInstance().addLutemonToFight(lutemon);
-                    notifyItemRemoved(pos);
+                    if (Storage.getInstance().getLutemonsAtFight().size() < 2) {
+                        Lutemon lutemon = Storage.getInstance().getLutemonFromHomeById(pos);
+                        Storage.getInstance().addLutemonToFight(lutemon);
+                        notifyItemRemoved(pos);
+                    }else Toast.makeText(context, "Taistelu-areena täynnä! Siirrä Lutemoneja pois areenalta siirtääksesi uuden", Toast.LENGTH_LONG).show(); //System.out.println("Taistelu-areena täynnä! Siirrä Lutemoneja pois areenalta siirtääksesi uuden");
                 }
                 if (Storage.getInstance().getActivityOn() == "train") { // from train to fight
-                    Lutemon lutemon = Storage.getInstance().getLutemonFromTrainById(pos);
-                    Storage.getInstance().addLutemonToFight(lutemon);
-                    notifyItemRemoved(pos);
+                    if (Storage.getInstance().getLutemonsAtFight().size() < 2) {
+                        Lutemon lutemon = Storage.getInstance().getLutemonFromTrainById(pos);
+                        Storage.getInstance().addLutemonToFight(lutemon);
+                        notifyItemRemoved(pos);
+                    }else Toast.makeText(context, "Taistelu-areena täynnä! Siirrä Lutemoneja pois areenalta siirtääksesi uuden", Toast.LENGTH_LONG).show();
                 }
             }
         });

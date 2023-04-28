@@ -67,10 +67,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void saveLutemons(View view)  {
-        Storage.getInstance().saveUsers(context);
+        Storage.getInstance().saveLutemons(context);
     }
     public void loadLutemons(View view)  {
-        Storage.getInstance().loadUsers(context);
+        Storage.getInstance().loadLutemons(context);
         recyclerView.setAdapter(new LutemonListAdapter(getApplicationContext(), storage.getLutemonsAtHome()));
     }
 

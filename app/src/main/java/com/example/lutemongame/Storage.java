@@ -48,9 +48,9 @@ public class Storage {
         return lutemonsAtFight;
     }
 
-    public void saveUsers(Context context) { // Save lutemons from the arraylists to own files
+    public void saveLutemons(Context context) { // Save lutemons from the arraylists to own files
         try {
-            ObjectOutputStream lutemonWriter = new ObjectOutputStream(context.openFileOutput("lutemonsAtHome.data", Context.MODE_PRIVATE));
+            ObjectOutputStream lutemonWriter = new ObjectOutputStream(context.openFileOutput("lutemonsAtHome.data", Context.MODE_PRIVATE)); // s
             lutemonWriter.writeObject(lutemonsAtHome);
             lutemonWriter = new ObjectOutputStream(context.openFileOutput("lutemonsAtTrain.data", Context.MODE_PRIVATE));
             lutemonWriter.writeObject(lutemonsAtTrain);
@@ -62,7 +62,7 @@ public class Storage {
             e.printStackTrace();
         }
     }
-    public void loadUsers(Context context) { // Load lutemons from the files to correct ArraysLists
+    public void loadLutemons(Context context) { // Load lutemons from the files to correct ArraysLists
         try {
             ObjectInputStream lutemonReader = new ObjectInputStream(context.openFileInput("lutemonsAtHome.data"));
             lutemonsAtHome = (ArrayList<Lutemon>) lutemonReader.readObject();
