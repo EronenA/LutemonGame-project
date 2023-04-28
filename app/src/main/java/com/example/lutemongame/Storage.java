@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 //import java.util.HashMap;
 
 public class Storage {
@@ -17,7 +18,8 @@ public class Storage {
     private ArrayList<Lutemon> lutemonsAtFight = new ArrayList<>(); // // Array list for lutemons at fighting
     private static String activityOn = "home";
 
-    //private HashMap<Integer, Lutemon> lutemons = new HashMap<>();
+    private HashMap<Integer, Lutemon> lutemonsHashMap = new HashMap<>();
+
     public static Storage getInstance() {
         if (storage == null) {
             storage = new Storage();
@@ -101,6 +103,24 @@ public class Storage {
 
     public String getActivityOn()   {
         return activityOn;
+    }
+
+    public HashMap<Integer, Lutemon> convertArrayListToHashmap(String list)  { // Convert Arraylist to hashmap, parameter which list
+        lutemonsHashMap.clear();
+
+        if (list == "train") { // convert Hashmap lutemons at training
+            for (Lutemon lutemon : lutemonsAtTrain) {
+                lutemonsHashMap.put(lutemon.getId(), lutemon);
+            }
+        }
+
+
+        if (list == "fight") {
+            for (Lutemon lutemon : lutemonsAtFight) { // convert Hashmap lutemons at training
+                lutemonsHashMap.put(lutemon.getId(), lutemon);
+            }
+        }
+        return lutemonsHashMap;
     }
 }
 

@@ -12,6 +12,8 @@ import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
 
     private Storage storage;
@@ -49,21 +51,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void moveLutemonsFromHome(View view)  {
-        RadioGroup rgSelectedLutemon = findViewById(R.id.rgSelectedLutemon);
-        //int testi = rb.getCheckedRadioButtonId();
-        Lutemon testi = Storage.getInstance().getLutemonFromHomeById(rgSelectedLutemon.getCheckedRadioButtonId());
+    public void hashMapForLutemonsFighting(View view)  { // test for convert Arraylist to hashmap
+        HashMap<Integer, Lutemon> LutMap = Storage.getInstance().convertArrayListToHashmap("fight");
 
-        System.out.println(testi.getName());
-        //RadioGroup rgSelectedLutemon = findViewById(R.id.rgSelectedLutemon);
-        //CheckBox selectedLutemon = findViewById(R.id.cbSelectLutemon);
 
-        //Lutemon lutemonMove = Storage.getInstance().getLutemonFromHomeById(rgSelectedLutemon.getCheckedRadioButtonId());
+        System.out.println(LutMap);
 
-        //System.out.println(lutemonMove.getName());
-        //CheckBox selectedLutemons = findViewById(R.id.cbSelectLutemon);
-
-        //System.out.println(selectedLutemons);
     }
 
     public void saveLutemons(View view)  {
