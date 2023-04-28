@@ -111,7 +111,7 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
                     Storage.getInstance().addLutemonToHome(lutemon);
                     notifyItemRemoved(pos);
                 }
-                if (Storage.getInstance().getActivityOn().equals("fight")) {
+                if (Storage.getInstance().getActivityOn().equals("fight")) { // from fight to home
                     Lutemon lutemon = Storage.getInstance().getLutemonFromFightById(pos);
                     Storage.getInstance().addLutemonToHome(lutemon);
                     notifyItemRemoved(pos);
