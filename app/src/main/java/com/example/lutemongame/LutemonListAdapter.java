@@ -45,12 +45,12 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
             public void onClick(View view) {
                 int pos = holder.getAdapterPosition();
                 // to train
-                if (Storage.getInstance().getActivityOn() == "home") { // from home
+                if (Storage.getInstance().getActivityOn() == "home") { // from home to train
                     Lutemon lutemon = Storage.getInstance().getLutemonFromHomeById(pos);
                     Storage.getInstance().addLutemonToTrain(lutemon);
                     notifyItemRemoved(pos);
                 }
-                if (Storage.getInstance().getActivityOn() == "fight") { // from fight
+                if (Storage.getInstance().getActivityOn() == "fight") { // from fight to train
                     Lutemon lutemon = Storage.getInstance().getLutemonFromFightById(pos);
                     Storage.getInstance().addLutemonToTrain(lutemon);
                     notifyItemRemoved(pos);
@@ -58,14 +58,11 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
             }
         });
 
-
         holder.imgFight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 int pos = holder.getAdapterPosition();
                 // to fight
-
                 if (Storage.getInstance().getActivityOn() == "home") { // from home to fight
                     if (Storage.getInstance().getLutemonsAtFight().size() < 2) {
                         Lutemon lutemon = Storage.getInstance().getLutemonFromHomeById(pos);
@@ -79,6 +76,24 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
                         Storage.getInstance().addLutemonToFight(lutemon);
                         notifyItemRemoved(pos);
                     }else Toast.makeText(context, "Taistelu-areena täynnä! Siirrä Lutemoneja pois areenalta siirtääksesi uuden", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        holder.imgHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int pos = holder.getAdapterPosition();
+                // to home
+                if (Storage.getInstance().getActivityOn().equals("train")) { // from train to home
+                    Lutemon lutemon = Storage.getInstance().getLutemonFromTrainById(pos);
+                    Storage.getInstance().addLutemonToHome(lutemon);
+                    notifyItemRemoved(pos);
+                }
+                if (Storage.getInstance().getActivityOn().equals("fight")) {
+                    Lutemon lutemon = Storage.getInstance().getLutemonFromFightById(pos);
+                    Storage.getInstance().addLutemonToHome(lutemon);
+                    notifyItemRemoved(pos);
                 }
             }
         });

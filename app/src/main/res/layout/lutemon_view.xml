@@ -64,38 +64,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RadioGroup
-            android:id="@+id/rgSelectedLutemon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </RadioGroup>
-
         <ImageView
             android:id="@+id/imgFight"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginStart="8dp"
             android:layout_marginBottom="4dp"
+            android:src="@drawable/fight"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imgTrain"
             app:layout_constraintHorizontal_bias="0.166"
-            app:layout_constraintStart_toStartOf="parent"
-            android:src="@drawable/fight" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/imgTrain"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/train"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgHome"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rgSelectedLutemon"
-            app:layout_constraintVertical_bias="0.6"
-            android:src="@drawable/train" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/home" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
