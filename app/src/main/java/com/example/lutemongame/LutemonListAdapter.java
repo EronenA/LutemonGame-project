@@ -37,7 +37,7 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
         holder.lutemonNameAndColor.setText(lutemons.get(position).getName() + " (" + lutemons.get(position).getColor() + ")");
         holder.lutemonAttack.setText("Hyökkäys: " + String.valueOf(lutemons.get(position).getAttack()));
         holder.lutemonDefence.setText("Puolustus: " + String.valueOf(lutemons.get(position).getDefence()));
-        holder.lutemonHealt.setText("Elämä: " + String.valueOf(lutemons.get(position).getHealth()));
+        holder.lutemonHealt.setText("Elämä: " + String.valueOf(lutemons.get(position).getHealth()) + "/" + String.valueOf(lutemons.get(position).getMaxHealth()));
         holder.lutemonExperience.setText("Kokemus: " + String.valueOf(lutemons.get(position).getExperience()));
         holder.lutemonFights.setText("Taistelut: " + String.valueOf(lutemons.get(position).getFights()));
         holder.lutemonWins.setText("Voitot: " + String.valueOf(lutemons.get(position).getWins()));

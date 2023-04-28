@@ -144,4 +144,11 @@ public abstract class Lutemon implements Serializable {
     public static void setIdCounter(int idCounter) {
         Lutemon.idCounter = idCounter;
     }
+
+    public void defend(int attack) {
+        int dmg = (attack - this.defence);
+        this.health = (this.health - dmg);
+
+    }
+
 }
