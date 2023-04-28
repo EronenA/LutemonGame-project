@@ -5,7 +5,7 @@ public class Black extends Lutemon {
     public Black(String name) {
         super(name, "Black", 9, 0,  16);
 
-        image = R.drawable.defaultpic;
+        image = R.drawable.lutemonblack;
     }
 
 }

@@ -4,6 +4,6 @@ public class Orange extends Lutemon{
     public Orange(String name) {
         super(name, "Orange", 8, 1,  17);
 
-        image = R.drawable.defaultpic;
+        image = R.drawable.lutemonorange;
     }
 }
