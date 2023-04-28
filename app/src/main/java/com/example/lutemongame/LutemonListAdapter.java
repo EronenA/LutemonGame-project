@@ -39,6 +39,11 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
         holder.lutemonDefence.setText("Puolustus: " + String.valueOf(lutemons.get(position).getDefence()));
         holder.lutemonHealt.setText("Elämä: " + String.valueOf(lutemons.get(position).getHealth()));
         holder.lutemonExperience.setText("Kokemus: " + String.valueOf(lutemons.get(position).getExperience()));
+        holder.lutemonFights.setText("Taistelut: " + String.valueOf(lutemons.get(position).getFights()));
+        holder.lutemonWins.setText("Voitot: " + String.valueOf(lutemons.get(position).getWins()));
+        holder.lutemonLosses.setText("Häviöt: " + String.valueOf(lutemons.get(position).getLoses()));
+        holder.lutemonTrainings.setText("Treenit: " + String.valueOf(lutemons.get(position).getTrainingSessions()));
+
 
         // Home button visibility
         if (Storage.getInstance().getActivityOn().equals("home")) {

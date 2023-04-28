@@ -57,6 +57,7 @@ public class TrainActivity extends AppCompatActivity {
         for (Lutemon lutemon : trainingLutemons) {
             lutemon.setExperience(lutemon.getExperience() + 1);
             lutemon.setAttack(lutemon.getAttack() + 1);
+            lutemon.setTrainingSessions(lutemon.getTrainingSessions() + 1);
 
         }
 

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class LutemonViewHolder extends RecyclerView.ViewHolder {
     ImageView lutemonImage, imgFight, imgTrain, imgHome;
-    TextView lutemonNameAndColor, lutemonColor, lutemonAttack, lutemonDefence, lutemonHealt, lutemonExperience;
+    TextView lutemonNameAndColor, lutemonColor, lutemonAttack, lutemonDefence, lutemonHealt, lutemonExperience, lutemonFights, lutemonWins, lutemonLosses, lutemonTrainings;
 
     public LutemonViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -26,6 +26,10 @@ public class LutemonViewHolder extends RecyclerView.ViewHolder {
         imgFight = itemView.findViewById(R.id.imgFight);
         imgTrain = itemView.findViewById(R.id.imgTrain);
         imgHome = itemView.findViewById(R.id.imgHome);
+        lutemonFights = itemView.findViewById(R.id.txtLutemonFights);
+        lutemonWins = itemView.findViewById(R.id.txtLutemonWins);
+        lutemonLosses = itemView.findViewById(R.id.txtLutemonLosses);
+        lutemonTrainings = itemView.findViewById(R.id.txtLutemonTrainings);
 
     }
 }
