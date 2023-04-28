@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void hashMapForLutemonsFighting(View view)  { // test for convert Arraylist to hashmap
-        HashMap<Integer, Lutemon> LutMap = Storage.getInstance().convertArrayListToHashmap("fight");
+    public void hashMapForLutemonsFighting(View view)  {                                    // test for convert Arraylist to hashmap
+        HashMap<Integer, Lutemon> LutMap = Storage.getInstance().convertArrayListToHashmap("train");
 
 
         System.out.println(LutMap);

@@ -141,4 +141,7 @@ public abstract class Lutemon implements Serializable {
         this.trainingSessions = trainingSessions;
     }
 
+    public static void setIdCounter(int idCounter) {
+        Lutemon.idCounter = idCounter;
+    }
 }

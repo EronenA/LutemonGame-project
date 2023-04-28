@@ -58,6 +58,8 @@ public class Storage {
             lutemonWriter.writeObject(lutemonsAtTrain);
             lutemonWriter = new ObjectOutputStream(context.openFileOutput("lutemonsAtFight.data", Context.MODE_PRIVATE));
             lutemonWriter.writeObject(lutemonsAtFight);
+            lutemonWriter = new ObjectOutputStream(context.openFileOutput("idCounter.data", Context.MODE_PRIVATE));
+            lutemonWriter.writeInt(Lutemon.getNumberOfCreatedLutemons());
             lutemonWriter.close();
         } catch (IOException e) {
             System.out.println("Tiedoston kirjoittaminen ei onnistunut");
@@ -72,6 +74,9 @@ public class Storage {
             lutemonsAtTrain = (ArrayList<Lutemon>) lutemonReader.readObject();
             lutemonReader = new ObjectInputStream(context.openFileInput("lutemonsAtFight.data"));
             lutemonsAtFight = (ArrayList<Lutemon>) lutemonReader.readObject();
+            lutemonReader = new ObjectInputStream(context.openFileInput("idCounter.data"));
+            Lutemon.setIdCounter(lutemonReader.readInt());
+
 
             lutemonReader.close();
         } catch (FileNotFoundException e) {
