@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 public class FightActivity extends AppCompatActivity {
 
@@ -57,7 +58,7 @@ public class FightActivity extends AppCompatActivity {
     }
 
 
-    public void lutemonsFight(View view) {
+    public void lutemonsFight(View view) throws InterruptedException {
         // Not enough Lutemons at fighting arena
         if (Storage.getInstance().getLutemonsAtFight().size() != 2) {
             Toast.makeText(context, "Ei tarpeeksi Lutemoneja Taistelu-areenalla!", Toast.LENGTH_LONG).show();
@@ -74,10 +75,12 @@ public class FightActivity extends AppCompatActivity {
             // Fight begins
             while (lutemonA.getHealth() > 0 | lutemonB.getHealth() > 0) {
                 // Stats print
+
                 System.out.println("1. " + lutemonA.getColor() + "(" + lutemonA.getName() + ") att: " + lutemonA.getAttack() + "; def: " + lutemonA.getDefence() + "; health: " + lutemonA.getHealth() + "/" + lutemonA.getMaxHealth()); //Test
                 System.out.println("2. " + lutemonB.getColor() + "(" + lutemonB.getName() + ") att: " + lutemonB.getAttack() + "; def: " + lutemonB.getDefence() + "; health: " + lutemonB.getHealth() + "/" + lutemonB.getMaxHealth()); //Test
                 txtFight.append("1. " + lutemonA.getColor() + "(" + lutemonA.getName() + ") att: " + lutemonA.getAttack() + "; def: " + lutemonA.getDefence() + "; health: " + lutemonA.getHealth() + "/" + lutemonA.getMaxHealth() + "\n");
                 txtFight.append("2. " + lutemonB.getColor() + "(" + lutemonB.getName() + ") att: " + lutemonB.getAttack() + "; def: " + lutemonB.getDefence() + "; health: " + lutemonB.getHealth() + "/" + lutemonB.getMaxHealth() + "\n");
+
                 // LutemonB attacks
                 System.out.println(lutemonB.getColor() + "(" + lutemonB.getName() + ") hyökkää " + lutemonA.getColor() + "(" + lutemonA.getName() + ") kimppuun!"); //Test
                 txtFight.append(lutemonB.getColor() + "(" + lutemonB.getName() + ") hyökkää " + lutemonA.getColor() + "(" + lutemonA.getName() + ") kimppuun!\n");

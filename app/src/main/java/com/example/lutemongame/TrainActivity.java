@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,10 @@ public class TrainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Context context;
     private LutemonListAdapter adapter;
+
+    //for measure time between clicks
+    private static int clickCount;
+    public static long startTime;
 
 
     @Override
@@ -51,18 +56,46 @@ public class TrainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void trainLutemons(View view) {
+    public void trainLutemons(int points) {
         ArrayList<Lutemon> trainingLutemons = Storage.getInstance().getLutemonsAtTrain();
         // All lutemons at training get +1 xp and +1 attack
         for (Lutemon lutemon : trainingLutemons) {
-            lutemon.setExperience(lutemon.getExperience() + 1);
-            lutemon.setAttack(lutemon.getAttack() + 1);
+            lutemon.setExperience(lutemon.getExperience() + points);
+            lutemon.setAttack(lutemon.getAttack() + points);
             lutemon.setTrainingSessions(lutemon.getTrainingSessions() + 1);
 
         }
-
+        Toast.makeText(context, "Sait " + points + "pistettä", Toast.LENGTH_LONG).show();
         adapter.notifyDataSetChanged();
 
+    }
+
+    public void measureDifferenceBetweenClicks(View view) {
+        long differenceBetweenClicks;
+        int goal = 20;
+        long differenceToGoal;
+        int points;
+        clickCount++;
+        if (clickCount == 1)    {
+            startTime = System.currentTimeMillis();
+        }else   {
+            differenceBetweenClicks = (System.currentTimeMillis() - startTime) / 100;
+            differenceToGoal = Math.abs(differenceBetweenClicks - goal);
+            clickCount = 0;
+            System.out.println(differenceToGoal);
+            if (differenceToGoal==0) {
+                points = 10;
+            } else if(differenceToGoal < 5) {
+                points = 2;
+            } else if(differenceToGoal < 10) {
+                points = 1;
+            }else {points = -3;}
+
+        trainLutemons(points);
+        }
+
+
+        return;
     }
 
 }

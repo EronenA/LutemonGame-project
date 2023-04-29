@@ -94,7 +94,7 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
                         Lutemon lutemon = Storage.getInstance().getLutemonFromHomeById(pos);
                         Storage.getInstance().addLutemonToFight(lutemon);
                         notifyItemRemoved(pos);
-                    }else Toast.makeText(context, "Taistelu-areena täynnä! Siirrä Lutemoneja pois areenalta siirtääksesi uuden", Toast.LENGTH_LONG).show(); //System.out.println("Taistelu-areena täynnä! Siirrä Lutemoneja pois areenalta siirtääksesi uuden");
+                    }else Toast.makeText(context, "Taistelu-areena täynnä! Siirrä Lutemoneja pois areenalta siirtääksesi uuden", Toast.LENGTH_LONG).show(); // Inform user only two lutemons fit to arena at time
                 }
                 if (Storage.getInstance().getActivityOn() == "train") { // from train to fight
                     if (Storage.getInstance().getLutemonsAtFight().size() < 2) {
