@@ -102,6 +102,10 @@ public class Storage {
         return lutemonsAtFight.remove(id);
     }
 
+    public Lutemon getLutemonFromFightByIdWithoutRemove(int id) {
+        return lutemonsAtFight.get(id);
+    }
+
     public void setActivityOn(String activity)  {
         this.activityOn = activity;
     }
@@ -127,5 +131,8 @@ public class Storage {
         }
         return lutemonsHashMap;
     }
+
+
+
 }
 

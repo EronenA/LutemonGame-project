@@ -11,9 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class LutemonViewHolder extends RecyclerView.ViewHolder {
-    ImageView lutemonImage, imgFight, imgTrain;
-    TextView lutemonNameAndColor, lutemonColor, lutemonAttack, lutemonDefence, lutemonHealt, lutemonExperience;
-    RadioGroup rgSelectedLutemon;
+    ImageView lutemonImage, imgFight, imgTrain, imgHome;
+    TextView lutemonNameAndColor, lutemonColor, lutemonAttack, lutemonDefence, lutemonHealt, lutemonExperience, lutemonFights, lutemonWins, lutemonLosses, lutemonTrainings;
 
     public LutemonViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -24,9 +23,13 @@ public class LutemonViewHolder extends RecyclerView.ViewHolder {
         lutemonDefence = itemView.findViewById(R.id.txtLutemonDefence);
         lutemonHealt = itemView.findViewById(R.id.txtLutemonHealt);
         lutemonExperience = itemView.findViewById(R.id.txtLutemonExperience);
-        rgSelectedLutemon = itemView.findViewById(R.id.rgSelectedLutemon);
         imgFight = itemView.findViewById(R.id.imgFight);
         imgTrain = itemView.findViewById(R.id.imgTrain);
+        imgHome = itemView.findViewById(R.id.imgHome);
+        lutemonFights = itemView.findViewById(R.id.txtLutemonFights);
+        lutemonWins = itemView.findViewById(R.id.txtLutemonWins);
+        lutemonLosses = itemView.findViewById(R.id.txtLutemonLosses);
+        lutemonTrainings = itemView.findViewById(R.id.txtLutemonTrainings);
 
     }
 }

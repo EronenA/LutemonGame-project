@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private Storage storage;
     private RecyclerView recyclerView;
     private Context context;
+    private LutemonListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +28,29 @@ public class MainActivity extends AppCompatActivity {
 
         storage = Storage.getInstance();
         recyclerView = findViewById(R.id.rvLutemonAtHomeList);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new LutemonListAdapter(getApplicationContext(), storage.getLutemonsAtHome()));
+        adapter = new LutemonListAdapter(getApplicationContext(), storage.getLutemonsAtHome());
+        recyclerView.setAdapter(adapter);
+
         context = MainActivity.this;
         storage.setActivityOn("home");
         System.out.println(storage.getActivityOn()); // test line, remove final version
 
 
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Lutemons rest at home and heal to max health
+        for (Lutemon lutemon : storage.getLutemonsAtHome()) {
+            lutemon.setHealth(lutemon.getMaxHealth());
+        }
+
+        adapter.notifyDataSetChanged();
+    }
+
     public void switchToAddLutemonActivity(View view)    {
         Intent intent = new Intent(this, AddLutemonActivity.class);
         startActivity(intent);
