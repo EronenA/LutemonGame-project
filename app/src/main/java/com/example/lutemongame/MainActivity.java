@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         HashMap<Integer, Lutemon> LutMap = Storage.getInstance().convertArrayListToHashmap("train");
 
 
-        System.out.println(LutMap);
+        System.out.println(LutMap.get(2).getName());
 
     }
 
