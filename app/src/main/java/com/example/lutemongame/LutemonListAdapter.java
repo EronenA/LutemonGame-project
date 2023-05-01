@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,7 +14,7 @@ import java.util.ArrayList;
 public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> {
 
     private Context context;
-    private ArrayList<Lutemon> lutemons = new ArrayList<>();
+    private ArrayList<Lutemon> lutemons;
     //private Storage storage;
 
 
@@ -123,13 +121,6 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
                 }
             }
         });
-
-
-        //RadioGroup rgLutemon = holder.rgSelectedLutemon.findViewById(position);
-        //RadioButton rb;
-        //rb = new RadioButton(context);
-        //rgLutemon.addView(rb);
-        //holder.rgSelectedLutemon.addView(rb);
 
     }
 
