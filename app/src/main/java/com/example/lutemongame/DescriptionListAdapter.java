@@ -12,9 +12,9 @@ import java.util.ArrayList;
 public class DescriptionListAdapter extends RecyclerView.Adapter<DescriptionViewHolder>{
 
     private Context context;
-    private ArrayList<String> descriptions;
+    private ArrayList<Description> descriptions;
 
-    public DescriptionListAdapter(Context context, ArrayList<String>descriptions) {
+    public DescriptionListAdapter(Context context, ArrayList<Description>descriptions) {
         this.context = context;
         this.descriptions = descriptions;
     }
@@ -28,7 +28,13 @@ public class DescriptionListAdapter extends RecyclerView.Adapter<DescriptionView
     @Override
     public void onBindViewHolder(@NonNull DescriptionViewHolder holder, int position) {
 
-        holder.description.setText(descriptions.get(position));
+        //holder.description.setText(descriptions.get(position));
+        holder.lutemon1.setImageResource(descriptions.get(position).getImageLutemon1());
+        holder.lutemon2.setImageResource(descriptions.get(position).getImageLutemon2());
+        holder.visual1.setImageResource(descriptions.get(position).getImageVisualDescription1());
+        holder.visual2.setImageResource(descriptions.get(position).getImageVisualDescription2());
+        holder.description.setText(descriptions.get(position).getDescription());
+
 
     }
 

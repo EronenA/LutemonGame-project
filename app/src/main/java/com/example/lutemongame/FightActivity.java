@@ -56,6 +56,7 @@ public class FightActivity extends AppCompatActivity {
 
 
     public void lutemonsFight(View view) throws InterruptedException {
+        storage.clearDescriptionForFight(); // Clear fight description list
         // Not enough Lutemons at fighting arena
         if (Storage.getInstance().getLutemonsAtFight().size() != 2) {
             Toast.makeText(context, "Ei tarpeeksi Lutemoneja Taistelu-areenalla!", Toast.LENGTH_LONG).show();
@@ -77,19 +78,34 @@ public class FightActivity extends AppCompatActivity {
                 System.out.println("2. " + lutemonB.getColor() + "(" + lutemonB.getName() + ") att: " + lutemonB.getAttack() + "; def: " + lutemonB.getDefence() + "; health: " + lutemonB.getHealth() + "/" + lutemonB.getMaxHealth()); //Test
                 txtFight.append("1. " + lutemonA.getColor() + "(" + lutemonA.getName() + ") att: " + lutemonA.getAttack() + "; def: " + lutemonA.getDefence() + "; health: " + lutemonA.getHealth() + "/" + lutemonA.getMaxHealth() + "\n");
                 txtFight.append("2. " + lutemonB.getColor() + "(" + lutemonB.getName() + ") att: " + lutemonB.getAttack() + "; def: " + lutemonB.getDefence() + "; health: " + lutemonB.getHealth() + "/" + lutemonB.getMaxHealth() + "\n");
-                storage.setFightDescription("1. " + lutemonA.getColor() + "(" + lutemonA.getName() + ") att: " + lutemonA.getAttack() + "; def: " + lutemonA.getDefence() + "; health: " + lutemonA.getHealth() + "/" + lutemonA.getMaxHealth() + "\n");
-                storage.setFightDescription("2. " + lutemonB.getColor() + "(" + lutemonB.getName() + ") att: " + lutemonB.getAttack() + "; def: " + lutemonB.getDefence() + "; health: " + lutemonB.getHealth() + "/" + lutemonB.getMaxHealth() + "\n");
+                //storage.setFightDescription("1. " + lutemonA.getColor() + "(" + lutemonA.getName() + ") att: " + lutemonA.getAttack() + "; def: " + lutemonA.getDefence() + "; health: " + lutemonA.getHealth() + "/" + lutemonA.getMaxHealth() + "\n");
+                //storage.setFightDescription("2. " + lutemonB.getColor() + "(" + lutemonB.getName() + ") att: " + lutemonB.getAttack() + "; def: " + lutemonB.getDefence() + "; health: " + lutemonB.getHealth() + "/" + lutemonB.getMaxHealth() + "\n");
+
+                Description description = new Description("1. " + lutemonA.getColor() + "(" + lutemonA.getName() + ") att: " + lutemonA.getAttack() + "; def: " + lutemonA.getDefence() +
+                        "; health: " + lutemonA.getHealth() + "/" + lutemonA.getMaxHealth() + "\n", lutemonA.getImage(), R.drawable.x, R.drawable.x, R.drawable.x);
+                storage.setFightDescription(description);
+
+                description = new Description("2. " + lutemonB.getColor() + "(" + lutemonB.getName() + ") att: " + lutemonB.getAttack()
+                        + "; def: " + lutemonB.getDefence() + "; health: " + lutemonB.getHealth() + "/" + lutemonB.getMaxHealth() + "\n", lutemonB.getImage(), R.drawable.x, R.drawable.x, R.drawable.x);
+                storage.setFightDescription(description);
+
 
                 // LutemonB attacks
                 System.out.println(lutemonB.getColor() + "(" + lutemonB.getName() + ") hyökkää " + lutemonA.getColor() + "(" + lutemonA.getName() + ") kimppuun!"); //Test
                 txtFight.append(lutemonB.getColor() + "(" + lutemonB.getName() + ") hyökkää " + lutemonA.getColor() + "(" + lutemonA.getName() + ") kimppuun!\n");
-                storage.setFightDescription(lutemonB.getColor() + "(" + lutemonB.getName() + ") hyökkää " + lutemonA.getColor() + "(" + lutemonA.getName() + ") kimppuun!\n");
+                //storage.setFightDescription(lutemonB.getColor() + "(" + lutemonB.getName() + ") hyökkää " + lutemonA.getColor() + "(" + lutemonA.getName() + ") kimppuun!\n");
+                description = new Description(lutemonB.getColor() + "(" + lutemonB.getName() + ") hyökkää " + lutemonA.getColor() + "(" + lutemonA.getName() + ") kimppuun!\n",
+                        lutemonB.getImage(), R.drawable.fight, R.drawable.shield, lutemonA.getImage());
+                storage.setFightDescription(description);
 
                 if (ThreadLocalRandom.current().nextInt(0, 10 + 1) >= 9) {
                     // Critical hit, 2x dmg
                     System.out.println("Kriittinen isku!");
                     txtFight.append("Kriittinen isku!\n");
-                    storage.setFightDescription("Kriittinen isku!\n");
+                    //storage.setFightDescription("Kriittinen isku!\n");
+                    description = new Description("Kriittinen isku!\n", R.drawable.star, R.drawable.star, R.drawable.star, R.drawable.star);
+                    storage.setFightDescription(description);
+
                     lutemonA.defend(lutemonB.getAttack() * 2);
                 } else {
                     // Normal hit
@@ -100,7 +116,10 @@ public class FightActivity extends AppCompatActivity {
                 if (lutemonA.getHealth() <= 0) {
                     System.out.println(lutemonA.getColor() + "(" + lutemonA.getName() + ") pyörtyy!"); //Test
                     txtFight.append(lutemonA.getColor() + "(" + lutemonA.getName() + ") pyörtyy!\n");
-                    storage.setFightDescription(lutemonA.getColor() + "(" + lutemonA.getName() + ") pyörtyy!\n");
+                    //storage.setFightDescription(lutemonA.getColor() + "(" + lutemonA.getName() + ") pyörtyy!\n");
+                    description = new Description(lutemonA.getColor() + "(" + lutemonA.getName() + ") pyörtyy!\n", lutemonA.getImage(), R.drawable.defeat, R.drawable.defeat, R.drawable.defeat);
+                    storage.setFightDescription(description);
+
                     lutemonB.setWins(lutemonB.getWins() + 1);
                     lutemonA.setLoses(lutemonA.getLoses() + 1);
                     break;
@@ -108,27 +127,43 @@ public class FightActivity extends AppCompatActivity {
                 // Fight continues
                 System.out.println(lutemonA.getColor() + "(" + lutemonA.getName() + ") selviää iskusta!"); //Test
                 txtFight.append(lutemonA.getColor() + "(" + lutemonA.getName() + ") selviää iskusta!\n");
-                storage.setFightDescription(lutemonA.getColor() + "(" + lutemonA.getName() + ") selviää iskusta!\n");
+                //storage.setFightDescription(lutemonA.getColor() + "(" + lutemonA.getName() + ") selviää iskusta!\n");
+                description = new Description(lutemonA.getColor() + "(" + lutemonA.getName() + ") selviää iskusta!", lutemonA.getImage(), R.drawable.star, R.drawable.star, R.drawable.star);
+                storage.setFightDescription(description);
+
 
                 // Stats print
                 System.out.println("2. " + lutemonB.getColor() + "(" + lutemonB.getName() + ") att: " + lutemonB.getAttack() + "; def: " + lutemonB.getDefence() + "; health: " + lutemonB.getHealth() + "/" + lutemonB.getMaxHealth()); //Test
                 System.out.println("1. " + lutemonA.getColor() + "(" + lutemonA.getName() + ") att: " + lutemonA.getAttack() + "; def: " + lutemonA.getDefence() + "; health: " + lutemonA.getHealth() + "/" + lutemonA.getMaxHealth()); //Test
                 txtFight.append("2. " + lutemonB.getColor() + "(" + lutemonB.getName() + ") att: " + lutemonB.getAttack() + "; def: " + lutemonB.getDefence() + "; health: " + lutemonB.getHealth() + "/" + lutemonB.getMaxHealth() + "\n");
                 txtFight.append("1. " + lutemonA.getColor() + "(" + lutemonA.getName() + ") att: " + lutemonA.getAttack() + "; def: " + lutemonA.getDefence() + "; health: " + lutemonA.getHealth() + "/" + lutemonA.getMaxHealth() + "\n");
-                storage.setFightDescription("2. " + lutemonB.getColor() + "(" + lutemonB.getName() + ") att: " + lutemonB.getAttack() + "; def: " + lutemonB.getDefence() + "; health: " + lutemonB.getHealth() + "/" + lutemonB.getMaxHealth() + "\n");
-                storage.setFightDescription("1. " + lutemonA.getColor() + "(" + lutemonA.getName() + ") att: " + lutemonA.getAttack() + "; def: " + lutemonA.getDefence() + "; health: " + lutemonA.getHealth() + "/" + lutemonA.getMaxHealth() + "\n");
+                //storage.setFightDescription("2. " + lutemonB.getColor() + "(" + lutemonB.getName() + ") att: " + lutemonB.getAttack() + "; def: " + lutemonB.getDefence() + "; health: " + lutemonB.getHealth() + "/" + lutemonB.getMaxHealth() + "\n");
+                //storage.setFightDescription("1. " + lutemonA.getColor() + "(" + lutemonA.getName() + ") att: " + lutemonA.getAttack() + "; def: " + lutemonA.getDefence() + "; health: " + lutemonA.getHealth() + "/" + lutemonA.getMaxHealth() + "\n");
+
+
+                description = new Description("2. " + lutemonB.getColor() + "(" + lutemonB.getName() + ") att: " + lutemonB.getAttack()
+                        + "; def: " + lutemonB.getDefence() + "; health: " + lutemonB.getHealth() + "/" + lutemonB.getMaxHealth() + "\n", lutemonB.getImage(), R.drawable.x, R.drawable.x, R.drawable.x);
+                storage.setFightDescription(description);
+                description = new Description("1. " + lutemonA.getColor() + "(" + lutemonA.getName() + ") att: " + lutemonA.getAttack() + "; def: " + lutemonA.getDefence() +
+                        "; health: " + lutemonA.getHealth() + "/" + lutemonA.getMaxHealth() + "\n", lutemonA.getImage(), R.drawable.x, R.drawable.x, R.drawable.x);
+                storage.setFightDescription(description);
 
 
                 // LutemonA attacks
                 System.out.println(lutemonA.getColor() + "(" + lutemonA.getName() + ") hyökkää " + lutemonB.getColor() + "(" + lutemonB.getName() + ") kimppuun!"); //Test
                 txtFight.append(lutemonA.getColor() + "(" + lutemonA.getName() + ") hyökkää " + lutemonB.getColor() + "(" + lutemonB.getName() + ") kimppuun!\n");
-                storage.setFightDescription(lutemonA.getColor() + "(" + lutemonA.getName() + ") hyökkää " + lutemonB.getColor() + "(" + lutemonB.getName() + ") kimppuun!\n");
+                //storage.setFightDescription(lutemonA.getColor() + "(" + lutemonA.getName() + ") hyökkää " + lutemonB.getColor() + "(" + lutemonB.getName() + ") kimppuun!\n");
+                description = new Description(lutemonA.getColor() + "(" + lutemonA.getName() + ") hyökkää " + lutemonB.getColor() + "(" + lutemonB.getName() + ") kimppuun!\n",
+                        lutemonA.getImage(), R.drawable.fight, R.drawable.shield, lutemonB.getImage());
+                storage.setFightDescription(description);
 
                 if (ThreadLocalRandom.current().nextInt(0, 10 + 1) >= 9) {
                     // Critical hit, 2x dmg
                     System.out.println("Kriittinen isku!");
                     txtFight.append("Kriittinen isku!\n");
-                    storage.setFightDescription("Kriittinen isku!\n");
+                    //storage.setFightDescription("Kriittinen isku!\n");
+                    description = new Description("Kriittinen isku!\n", R.drawable.star, R.drawable.star, R.drawable.star, R.drawable.star);
+                    storage.setFightDescription(description);
 
                     lutemonB.defend(lutemonA.getAttack() * 2);
                 } else {
@@ -140,7 +175,10 @@ public class FightActivity extends AppCompatActivity {
                 if (lutemonB.getHealth() <= 0) {
                     System.out.println(lutemonB.getColor() + "(" + lutemonB.getName() + ") pyörtyy!"); //Test
                     txtFight.append(lutemonB.getColor() + "(" + lutemonB.getName() + ") pyörtyy!\n");
-                    storage.setFightDescription(lutemonB.getColor() + "(" + lutemonB.getName() + ") pyörtyy!\n");
+                    //storage.setFightDescription(lutemonB.getColor() + "(" + lutemonB.getName() + ") pyörtyy!\n");
+                    description = new Description(lutemonB.getColor() + "(" + lutemonB.getName() + ") pyörtyy!\n", lutemonB.getImage(), R.drawable.defeat, R.drawable.defeat, R.drawable.defeat);
+                    storage.setFightDescription(description);
+
 
                     lutemonA.setWins(lutemonA.getWins() + 1);
                     lutemonB.setLoses(lutemonB.getLoses() + 1);
@@ -149,7 +187,10 @@ public class FightActivity extends AppCompatActivity {
                 // Fight continues
                 System.out.println(lutemonB.getColor() + "(" + lutemonB.getName() + ") selviää iskusta!"); //Test
                 txtFight.append(lutemonB.getColor() + "(" + lutemonB.getName() + ") selviää iskusta!\n");
-                storage.setFightDescription(lutemonB.getColor() + "(" + lutemonB.getName() + ") selviää iskusta!\n");
+                //storage.setFightDescription(lutemonB.getColor() + "(" + lutemonB.getName() + ") selviää iskusta!\n");
+                description = new Description(lutemonB.getColor() + "(" + lutemonB.getName() + ") selviää iskusta!", lutemonB.getImage(), R.drawable.star, R.drawable.star, R.drawable.star);
+                storage.setFightDescription(description);
+
 
             }
 
@@ -159,6 +200,9 @@ public class FightActivity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
             //storage.setFightDescription("Tähän kuvausta 1");
             //storage.setFightDescription("Tähän kuvausta 2");
+            Description description = new Description("Taistelu loppui.", R.drawable.checkeredflag, R.drawable.checkeredflag, R.drawable.checkeredflag, R.drawable.checkeredflag);
+            storage.setFightDescription(description);
+
             switchToFightDescriptionActivity();
 
 
@@ -174,14 +218,5 @@ public class FightActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-   /* public void printFightDescription(String description) throws InterruptedException { // test print with pause to txt field
-        txtFight.append("testi ennen taukoa");
-        adapter.notifyDataSetChanged();
-        Thread.sleep(2000);
-        txtFight.append("testi ennen taukoa");
-
-
-        adapter.notifyDataSetChanged();
-    }*/
 
 }

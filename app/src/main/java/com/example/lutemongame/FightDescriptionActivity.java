@@ -14,10 +14,7 @@ public class FightDescriptionActivity extends AppCompatActivity {
 
     private Storage storage;
     private RecyclerView recyclerView;
-    private Context context;
     private DescriptionListAdapter adapter;
-    //private ArrayList<String>descriptionHolder;
-    //private ArrayList<String> descriptions;
     private static int step;
 
     @Override
@@ -28,10 +25,12 @@ public class FightDescriptionActivity extends AppCompatActivity {
 
         storage = Storage.getInstance();
         recyclerView = findViewById(R.id.rvDescription);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));//.setReverseLayout(true);
+        ArrayList<String> clear = new ArrayList<>();
+        storage.clearDescriptionSetToScreen();
         adapter = new DescriptionListAdapter(getApplicationContext(), storage.getDescriptionSetToScreen());
         recyclerView.setAdapter(adapter);
-        context = FightDescriptionActivity.this;
+
         step = 0;
 
     }
@@ -40,11 +39,12 @@ public class FightDescriptionActivity extends AppCompatActivity {
 
         int steps = storage.getDescriptionForFight().size();
         if (steps > step) {
-            String description = storage.getDescriptionString(step);
+            Description description = storage.getDescriptionString(step);
             storage.setDescriptionToScreen(description);
             System.out.println(description);
-            adapter.notifyDataSetChanged();
+            adapter.notifyItemInserted(step);
             recyclerView.scrollToPosition(step);
+
             step++;
         }
     }
