@@ -8,41 +8,41 @@
 
     <Button
         android:id="@+id/btnHomeFromFight"
-        android:layout_width="105dp"
+        android:layout_width="113dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
         android:onClick="switchToMainActivity"
         android:text="Koti"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnTrainFromFight"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnTrainFromFight"
-        android:layout_width="105dp"
+        android:layout_width="113dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:onClick="switchToTrainActivity"
         android:text="Treeni"
-        app:layout_constraintEnd_toStartOf="@+id/btnFightToFight"
-        app:layout_constraintStart_toEndOf="@+id/btnHomeFromFight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnFightToFight"
-        android:layout_width="105dp"
+        android:layout_width="113dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         android:text="Taistelu"
         android:textColor="#787878"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnTrainFromFight"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLutemonAtFightList"
         android:layout_width="409dp"
-        android:layout_height="229dp"
+        android:layout_height="400dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnTrainFromFight" />
@@ -51,33 +51,12 @@
         android:id="@+id/btnLutemonsFight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="4dp"
         android:onClick="lutemonsFight"
         android:text="Taistele"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ScrollView
-        android:layout_width="410dp"
-        android:layout_height="269dp"
-        android:layout_marginTop="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLutemonsFight">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/txtFight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp" />
-        </LinearLayout>
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/rvLutemonAtFightList" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

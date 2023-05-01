@@ -11,53 +11,52 @@
         android:id="@+id/btnHomeFromTrain"
         android:layout_width="105dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
         android:onClick="switchToMainActivity"
         android:text="Koti"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnTrainTrain"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnFightFromTrain"
         android:layout_width="105dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         android:onClick="switchToFightActivity"
         android:text="Taistelu"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnTrainTrain"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnTrainTrain"
         android:layout_width="105dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="Treeni"
         android:textColor="#787878"
-        app:layout_constraintEnd_toStartOf="@+id/btnFightFromTrain"
-        app:layout_constraintStart_toEndOf="@+id/btnHomeFromTrain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLutemonAtTrainList"
         android:layout_width="409dp"
-        android:layout_height="318dp"
+        android:layout_height="400dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnFightFromTrain" />
 
     <Button
         android:id="@+id/btnTrainLutemons"
-        android:layout_width="wrap_content"
+        android:layout_width="113dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="452dp"
+        android:layout_marginTop="4dp"
         android:onClick="measureDifferenceBetweenClicks"
         android:text="Treenaa"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/rvLutemonAtTrainList" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

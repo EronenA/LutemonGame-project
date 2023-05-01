@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/btnAddLutemon"
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="388dp"
         android:onClick="createLutemon"
@@ -73,7 +73,7 @@
 
     <Button
         android:id="@+id/btnMain"
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:onClick="switchMainActivity"
         android:text="Takaisin"

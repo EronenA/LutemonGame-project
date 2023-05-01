@@ -22,6 +22,7 @@ public class TrainActivity extends AppCompatActivity {
     //for measure time between clicks
     private static int clickCount;
     public static long startTime;
+    int points;
 
 
     @Override
@@ -38,11 +39,6 @@ public class TrainActivity extends AppCompatActivity {
         context = TrainActivity.this;
         storage.setActivityOn("train");
         System.out.println(storage.getActivityOn()); // test line, remove final version
-
-
-        //Lutemon testLutemon = new Black("matti");                 // test lutemon
-        //Storage.getInstance().addLutemonToTrain(testLutemon);
-
     }
 
 
@@ -60,42 +56,47 @@ public class TrainActivity extends AppCompatActivity {
         ArrayList<Lutemon> trainingLutemons = Storage.getInstance().getLutemonsAtTrain();
         // All lutemons at training get +1 xp and +1 attack
         for (Lutemon lutemon : trainingLutemons) {
-            lutemon.setExperience(lutemon.getExperience() + points);
+            lutemon.setExperience(lutemon.getExperience() + 1);
             lutemon.setAttack(lutemon.getAttack() + points);
             lutemon.setTrainingSessions(lutemon.getTrainingSessions() + 1);
 
         }
-        Toast.makeText(context, "Sait " + points + "pistettä", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "Sait " + points + " pistettä", Toast.LENGTH_LONG).show();
         adapter.notifyDataSetChanged();
 
     }
-
+// Target 2 seconds for 2 cliks at trainin, score gets better the closer you get
     public void measureDifferenceBetweenClicks(View view) {
         long differenceBetweenClicks;
         int goal = 20;
         long differenceToGoal;
-        int points;
-        clickCount++;
-        if (clickCount == 1)    {
-            startTime = System.currentTimeMillis();
-        }else   {
-            differenceBetweenClicks = (System.currentTimeMillis() - startTime) / 100;
-            differenceToGoal = Math.abs(differenceBetweenClicks - goal);
-            clickCount = 0;
-            System.out.println(differenceToGoal);
-            if (differenceToGoal==0) {
-                points = 10;
-            } else if(differenceToGoal < 5) {
-                points = 2;
-            } else if(differenceToGoal < 10) {
-                points = 1;
-            }else {points = -3;}
 
-        trainLutemons(points);
+        clickCount++;
+        if (Storage.getInstance().getLutemonsAtTrain().size()==0) {
+            Toast.makeText(context, "Lisää ainakin yksi lutemon Harjoitus-areenalle", Toast.LENGTH_LONG).show();
+        }else {
+
+            if (clickCount == 1)    {
+                startTime = System.currentTimeMillis();
+            }else   {
+                differenceBetweenClicks = (System.currentTimeMillis() - startTime) / 100;
+                differenceToGoal = Math.abs(differenceBetweenClicks - goal);
+
+                clickCount = 0;
+                System.out.println(differenceToGoal);
+                if (differenceToGoal==0) {
+                    points = 10;
+                } else if(differenceToGoal < 5) {
+                    points = 2;
+                } else if(differenceToGoal < 10) {
+                    points = 1;
+                }else {points = -3;}
+                trainLutemons(points);
+                //Toast.makeText(context, "Ero " + differenceToGoal, Toast.LENGTH_LONG).show();
+            }
+
         }
 
-
-        return;
     }
 
 }

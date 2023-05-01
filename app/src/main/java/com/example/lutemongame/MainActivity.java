@@ -34,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         context = MainActivity.this;
-        storage.setActivityOn("home");
-        System.out.println(storage.getActivityOn()); // test line, remove final version
+        storage.setActivityOn("home"); // set current activity on
 
 
     }
@@ -67,13 +66,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void hashMapForLutemonsFighting(View view)  {                                    // test for convert Arraylist to hashmap
-        HashMap<Integer, Lutemon> LutMap = Storage.getInstance().convertArrayListToHashmap("train");
-
-
-        System.out.println(LutMap.get(2).getName());
-
-    }
 
     public void saveLutemons(View view)  {
         Storage.getInstance().saveLutemons(context);

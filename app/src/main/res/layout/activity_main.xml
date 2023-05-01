@@ -8,90 +8,77 @@
 
     <Button
         android:id="@+id/btnHome"
-        android:layout_width="105dp"
+        android:layout_width="113dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
         android:text="Koti"
         android:textColor="#787878"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnTrain"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnTrain"
-        android:layout_width="105dp"
+        android:layout_width="113dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:onClick="switchToTrainActivity"
         android:text="Treeni"
-        app:layout_constraintEnd_toStartOf="@+id/btnFight"
-        app:layout_constraintStart_toEndOf="@+id/btnHome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnFight"
-        android:layout_width="105dp"
+        android:layout_width="113dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         android:onClick="switchToFightActivity"
         android:text="Taistelu"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnTrain"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnAddLutemonAct"
-        android:layout_width="120dp"
+        android:layout_width="113dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="388dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
         android:onClick="switchToAddLutemonActivity"
         android:text="Luo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.281"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/btnLoad"
+        app:layout_constraintTop_toBottomOf="@+id/rvLutemonAtHomeList" />
 
     <Button
         android:id="@+id/btnLoad"
-        android:layout_width="120dp"
+        android:layout_width="113dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         android:onClick="loadLutemons"
         android:text="Lataa"
-        app:layout_constraintEnd_toEndOf="@+id/btnSave"
-        app:layout_constraintStart_toEndOf="@+id/btnAddLutemonAct"
-        app:layout_constraintTop_toBottomOf="@+id/btnSave" />
-
-    <Button
-        android:id="@+id/btnMove"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:onClick="hashMapForLutemonsFighting"
-        android:text="Siirrä"
-        app:layout_constraintEnd_toEndOf="@+id/btnAddLutemonAct"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btnAddLutemonAct"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddLutemonAct" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvLutemonAtHomeList" />
 
     <Button
         android:id="@+id/btnSave"
-        android:layout_width="120dp"
+        android:layout_width="113dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="388dp"
+        android:layout_marginTop="4dp"
         android:onClick="saveLutemons"
         android:text="Tallenna"
-        app:layout_constraintStart_toEndOf="@+id/btnAddLutemonAct"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/btnLoad"
+        app:layout_constraintTop_toBottomOf="@+id/rvLutemonAtHomeList" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLutemonAtHomeList"
-        android:layout_width="411dp"
-        android:layout_height="321dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddLutemonAct"
+        android:layout_width="409dp"
+        android:layout_height="400dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTrain"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btnTrain" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

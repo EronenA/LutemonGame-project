@@ -47,7 +47,6 @@ public class AddLutemonActivity extends AppCompatActivity {
         }
 
         lutemonNameInput.setText("");
-        //System.out.println(newLutemon.name + " " + newLutemon.color + " " + newLutemon.maxHealth + " " + newLutemon.id); // test line
         storage.addLutemonToHome(newLutemon); //Add created Lutemon to lutemons at home
     }
     public void switchMainActivity(View view)    {

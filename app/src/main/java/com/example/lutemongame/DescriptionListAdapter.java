@@ -28,7 +28,6 @@ public class DescriptionListAdapter extends RecyclerView.Adapter<DescriptionView
     @Override
     public void onBindViewHolder(@NonNull DescriptionViewHolder holder, int position) {
 
-        //holder.description.setText(descriptions.get(position));
         holder.lutemon1.setImageResource(descriptions.get(position).getImageLutemon1());
         holder.lutemon2.setImageResource(descriptions.get(position).getImageLutemon2());
         holder.visual1.setImageResource(descriptions.get(position).getImageVisualDescription1());
