@@ -54,7 +54,7 @@ public class TrainActivity extends AppCompatActivity {
 
     public void trainLutemons(int points) {
         ArrayList<Lutemon> trainingLutemons = Storage.getInstance().getLutemonsAtTrain();
-        // All lutemons at training get +1 xp and +1 attack
+        // All lutemons at training get +1 xp and + points based on clicks to attack
         for (Lutemon lutemon : trainingLutemons) {
             lutemon.setExperience(lutemon.getExperience() + 1);
             lutemon.setAttack(lutemon.getAttack() + points);
@@ -76,12 +76,14 @@ public class TrainActivity extends AppCompatActivity {
             Toast.makeText(context, "Lisää ainakin yksi lutemon Harjoitus-areenalle", Toast.LENGTH_LONG).show();
         }else {
 
+            //measure difference between cliks
             if (clickCount == 1)    {
                 startTime = System.currentTimeMillis();
             }else   {
                 differenceBetweenClicks = (System.currentTimeMillis() - startTime) / 100;
                 differenceToGoal = Math.abs(differenceBetweenClicks - goal);
 
+                // points at training based difference
                 clickCount = 0;
                 System.out.println(differenceToGoal);
                 if (differenceToGoal==0) {
@@ -91,7 +93,7 @@ public class TrainActivity extends AppCompatActivity {
                 } else if(differenceToGoal < 10) {
                     points = 1;
                 }else {points = -3;}
-                trainLutemons(points);
+                trainLutemons(points); // points to train lutemons
                 //Toast.makeText(context, "Ero " + differenceToGoal, Toast.LENGTH_LONG).show();
             }
 
