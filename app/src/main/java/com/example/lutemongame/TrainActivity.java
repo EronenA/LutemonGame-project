@@ -19,7 +19,7 @@ public class TrainActivity extends AppCompatActivity {
     private Context context;
     private LutemonListAdapter adapter;
 
-    //for measure time between clicks
+    //variables for measure time between clicks
     private static int clickCount;
     public static long startTime;
     int points;
@@ -57,7 +57,14 @@ public class TrainActivity extends AppCompatActivity {
         // All lutemons at training get +1 xp and + points based on clicks to attack
         for (Lutemon lutemon : trainingLutemons) {
             lutemon.setExperience(lutemon.getExperience() + 1);
-            lutemon.setAttack(lutemon.getAttack() + points);
+            if (points > 0) {
+                points = points * lutemon.getExperience();
+                lutemon.setAttack(lutemon.getAttack() + points);
+                lutemon.setDefence(lutemon.getDefence() + points);
+            }else {
+                lutemon.setAttack(lutemon.getAttack() + points);
+                lutemon.setDefence(lutemon.getDefence() + points);
+            }
             lutemon.setTrainingSessions(lutemon.getTrainingSessions() + 1);
 
         }
